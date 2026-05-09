@@ -20,7 +20,7 @@ class AutorController
     public function index(Request $request, Response $response)
     {
         $page = $request->getQueryParams()['page'] ?? 1;
-        $autores = Author::withCount('posts')->orderBy('display_name', 'asc')->paginate(20, ['*'], 'page', $page);
+        $autores = Author::withCount('posts')->orderBy('id', 'desc')->paginate(20, ['*'], 'page', $page);
 
         return $this->view->render($response, 'admin/autor/index.twig', [
             'autores' => $autores,
