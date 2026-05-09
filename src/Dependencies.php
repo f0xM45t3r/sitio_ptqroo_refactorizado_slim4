@@ -51,13 +51,14 @@ return function($container) {
         return new FilesystemLoader(__DIR__ . '/../templates');
     });
     $container->set(Twig::class, function ($container) {
-        $loader = $container->get(Twig\Loader\LoaderInterface::class);
-        return new Twig($loader, [
+        $twig = Twig::create(__DIR__ . '/../templates', [
             'cache' => $_ENV['APP_ENV'] === 'production' 
                 ? __DIR__ . '/../var/cache/twig' 
                 : false,
             'debug' => $_ENV['APP_ENV'] === 'development'
         ]);
+
+        return $twig;
     });
 
     // Configurar Flash Messages en el contenedor
