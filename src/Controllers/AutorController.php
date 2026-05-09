@@ -122,7 +122,8 @@ class AutorController
 
         if (  $uploadedFile || $uploadedFile->getError() === UPLOAD_ERR_OK) {
             $ext = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
-            $filename = uniqid('img_', true) . '.' . $ext;
+            // Convertir a minúsculas para evitar problemas de case-sensitivity en Linux
+            $filename = strtolower(uniqid('img_', true) . '.' . $ext);
             $destination = __DIR__ . '/../../public_html/img/autores/' . $filename;
     
             // Obtener el tipo de imagen
@@ -184,7 +185,7 @@ class AutorController
         //echo "vamos bien aledeanos, ya se guardo la imagen"; exit;
         
         $post = Author::findOrFail($args['id']);
-        $post->url_media = $filename;
+        $post->url_media = strtolower($filename);
         $post->save();
             
         return $response->withHeader('Location', '/autor')->withStatus(302);

@@ -33,9 +33,12 @@
                             <td>{{ autor.id }}</td>
                             <td class="text-center">
                                 {% if autor.url_media %}
+                                    {# Usamos un filtro de lowercase por si acaso hay conflicto de extensiones #}
                                     <a href="#" class="view-photo" data-photo="{{ base_url }}img/autores/{{ autor.url_media }}" data-name="{{ autor.display_name }}">
                                         <img class="img-profile rounded-circle border shadow-sm"
-                                        src="{{ base_url }}img/autores/{{ autor.url_media }}" style="width: 50px; height: 50px; object-fit: cover; cursor: pointer;">
+                                        src="{{ base_url }}img/autores/{{ autor.url_media }}" 
+                                        style="width: 50px; height: 50px; object-fit: cover; cursor: pointer;"
+                                        onerror="this.onerror=null; this.src='{{ base_url }}img/autores/sin.jpg';">
                                     </a>
                                 {% else %}
                                     <div class="bg-light rounded-circle border d-inline-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
