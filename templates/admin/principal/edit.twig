@@ -1,42 +1,63 @@
 {% extends 'layouts/admin-base.twig' %}
 
-{% block title %}Crear Autor{% endblock %}
+{% block title %}Editar Artículo Principal{% endblock %}
 
 {% block content %}
 
 
     <div class="container mt-4">
-        <h1>Editar Artículo Principal  -</h1>
+        <h1>Editar Artículo Principal</h1>
         
-        <form method="post" action="{{ url_for('principal.update',{'id':  principal.id }  ) }}">
+        <form method="post" action="{{ url_for('principal.update', {id: principal.id}) }}">
             <div class="mb-3">
-                <label for="nombre" class="form-label">Intro</label>
-                <input type="text" class="form-control" id="intro" name="intro" value="{{principal.intro}}" required>
+                <label for="intro" class="form-label">Intro (Texto naranja superior)</label>
+                <input type="text" class="form-control" id="intro" name="intro" value="{{ principal.intro }}" required>
             </div>
                                   
             <div class="mb-3">
-                <label for="cargo" class="form-label">titulo</label>
-                <input type="text" class="form-control" id="titulo" name="titulo" value="{{principal.titulo}}" required>
+                <label for="titulo" class="form-label">Título Principal</label>
+                <input type="text" class="form-control" id="titulo" name="titulo" value="{{ principal.titulo }}" required>
             </div>
 
             <div class="mb-3">
-                <label for="nombre" class="form-label">Balazo</label>
-                <input type="text" class="form-control" id="balazo" name="balazo" value="{{principal.balazo}}" required>
+                <label for="balazo" class="form-label">Balazo (Descripción corta)</label>
+                <textarea class="form-control" id="balazo" name="balazo" rows="2" required>{{ principal.balazo }}</textarea>
             </div>
                                   
             <div class="mb-3">
-                <label for="cargo" class="form-label">Id post</label>
-                <input type="text" class="form-control" id="id_post" name="id_post" value="{{principal.id_post}}" required>
+                <label for="id_post" class="form-label">Vincular a Publicación (Post)</label>
+                <select name="id_post" id="id_post" class="form-control select2" required>
+                    {% for post in posts %}
+                        <option value="{{ post.id }}" {% if post.id == principal.id_post %}selected{% endif %}>
+                            {{ post.title }} (ID: {{ post.id }})
+                        </option>
+                    {% endfor %}
+                </select>
             </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="publicar" name="publicar" value="y"  {{ principal.publicar == 'y' ? 'checked' : '' }} >
-                <label class="form-check-label" for="publicar" >Publicar</label>
+
+            <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="publicar" name="publicar" value="y" {% if principal.publicar == 'y' %}checked{% endif %}>
+                    <label class="custom-control-label" for="publicar">Publicado</label>
+                </div>
             </div>            
             <hr>
-            <button type="submit" class="btn btn-primary">Actualizar </button>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
             <a href="{{ url_for('principal.index') }}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 
+{% endblock %}
 
+{% block script %}
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.select2').select2({
+        theme: 'bootstrap4',
+        placeholder: 'Buscar publicación...'
+    });
+});
+</script>
 {% endblock %}

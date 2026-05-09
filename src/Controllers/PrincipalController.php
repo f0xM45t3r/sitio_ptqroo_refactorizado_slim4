@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Principal;
+use App\Models\Post;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
@@ -31,7 +32,8 @@ class PrincipalController
     // Mostrar formulario de creación
     public function create(Request $request, Response $response)
     {
-        return $this->view->render($response, 'admin/principal/create.twig');
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        return $this->view->render($response, 'admin/principal/create.twig', compact('posts'));
     }
 
     // Almacenar nuevo mensaje
@@ -50,8 +52,6 @@ class PrincipalController
         
         $principal->save();
 
-        //echo "<pre>"; print_r($principal); echo "</pre>"; exit;
-
         // Redirigir al listado
         return $response
             ->withHeader('Location', '/principal')
@@ -64,7 +64,7 @@ class PrincipalController
         $principal = Principal::where('id', $args['id'])->firstOrFail();
 
         return $this->view->render($response, 'admin/principal/show.twig', [
-            'registro' => $mensaje
+            'registro' => $principal
         ]);
     }
 
@@ -72,9 +72,11 @@ class PrincipalController
     public function edit(Request $request, Response $response, $args)
     {
         $principal = Principal::findOrFail($args['id']);
+        $posts = Post::orderBy('created_at', 'desc')->get();
 
         return $this->view->render($response, 'admin/principal/edit.twig', [
             'principal' => $principal,
+            'posts' => $posts
         ]);
     }
 
@@ -103,12 +105,12 @@ class PrincipalController
     // Eliminar autor
     public function delete(Request $request, Response $response, $args)
     {
-        $autor = Category::findOrFail($args['id']);
-        $autor->delete();
+        $principal = Principal::findOrFail($args['id']);
+        $principal->delete();
 
         // Redirigir al listado
         return $response
-            ->withHeader('Location', '/autor')
+            ->withHeader('Location', '/principal')
             ->withStatus(302);
     } 
 
@@ -141,8 +143,6 @@ class PrincipalController
             $filename = uniqid('imgb_', true) . '.' . $ext;
             $destination = __DIR__ . '/../../public_html/img/main/' . $filename;
     
-            //echo ($destination); exit();
-            
             // Obtener el tipo de imagen
             $mimeType = $uploadedFile->getClientMediaType();
 
@@ -199,8 +199,6 @@ class PrincipalController
             imagedestroy($imgDst);
         }
 
-        //echo "vamos bien, ya se guardo la imagen"; exit;
-        
         $post = Principal::findOrFail($args['id']);
         $post->url_media = $filename;
         $post->save();

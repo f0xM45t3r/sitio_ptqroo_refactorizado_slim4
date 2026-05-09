@@ -1,43 +1,69 @@
 {% extends 'layouts/admin-base.twig' %}
 
-{% block title %}Crear Autor{% endblock %}
+{% block title %}Crear Artículo Principal{% endblock %}
 
 {% block content %}
 
 
     <div class="container mt-4">
-        <h1>Crear Artículo Principal  </h1>
+        <h1>Crear Artículo Principal</h1>
+        <p class="text-muted">Este artículo aparecerá en el carrusel de la página de inicio.</p>
         
         <form method="post" action="{{ url_for('principal.store') }}">
             <div class="mb-3">
-                <label for="nombre" class="form-label">Intro</label>
-                <input type="text" class="form-control" id="intro" name="intro" required>
+                <label for="intro" class="form-label">Intro (Texto naranja superior)</label>
+                <input type="text" class="form-control" id="intro" name="intro" placeholder="Ej: El PT a la vanguardia" required>
             </div>
                                   
             <div class="mb-3">
-                <label for="cargo" class="form-label">titulo</label>
-                <input type="text" class="form-control" id="titulo" name="titulo" required>
+                <label for="titulo" class="form-label">Título Principal</label>
+                <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Ej: Impulsando el Liderazgo Femenino" required>
             </div>
 
             <div class="mb-3">
-                <label for="nombre" class="form-label">Balazo</label>
-                <input type="text" class="form-control" id="balazo" name="balazo" required>
+                <label for="balazo" class="form-label">Balazo (Descripción corta)</label>
+                <textarea class="form-control" id="balazo" name="balazo" rows="2" placeholder="Ej: Una breve descripción que acompaña al título" required></textarea>
             </div>
                                   
             <div class="mb-3">
-                <label for="cargo" class="form-label">Id post</label>
-                <input type="text" class="form-control" id="id_post" name="id_post" required>
+                <label for="id_post" class="form-label">Vincular a Publicación (Post)</label>
+                <select name="id_post" id="id_post" class="form-control select2" required>
+                    <option value="">-- Seleccione una publicación --</option>
+                    {% for post in posts %}
+                        <option value="{{ post.id }}">{{ post.title }} (ID: {{ post.id }})</option>
+                    {% endfor %}
+                </select>
+                <small class="form-text text-muted">El botón "Leer" del carrusel llevará a esta publicación.</small>
             </div>
 
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="publicar" name="publicar" value="y" >
-                <label class="form-check-label" for="publicar">Publicar</label>
+            <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="publicar" name="publicar" value="y" checked>
+                    <label class="custom-control-label" for="publicar">Publicar inmediatamente</label>
+                </div>
             </div>            
             <hr>
-            <button type="submit" class="btn btn-primary">Crear</button>
-            <a href="{{ url_for('autor.index') }}" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Crear y Continuar</button>
+            <a href="{{ url_for('principal.index') }}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 
+{% endblock %}
 
+{% block script %}
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.select2').select2({
+        theme: 'bootstrap4',
+        placeholder: 'Buscar publicación...'
+    });
+});
+</script>
+<style>
+    .select2-container--bootstrap4 .select2-selection--single {
+        height: calc(1.5em + 0.75 margin + 2px) !important;
+    }
+</style>
 {% endblock %}
