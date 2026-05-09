@@ -39,8 +39,13 @@
             </div>
             
             <div class="mb-3">
-                <label for="content" class="form-label">Contenido</label>
-                <textarea class="form-control" id="content" name="content" rows="10" required></textarea>
+                <label for="content" class="form-label">Contenido (Texto plano/Resumen)</label>
+                <textarea class="form-control" id="content" name="content" rows="4" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="html_content" class="form-label">Contenido Enriquecido (HTML - Para diseños complejos)</label>
+                <textarea class="form-control" id="html_content" name="html_content" rows="15"></textarea>
             </div>
             
             <div class="mb-3">
@@ -53,5 +58,16 @@
         </form>
     </div>
 
+{% endblock %}
 
+{% block extra_js %}
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+  tinymce.init({
+    selector: '#html_content',
+    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+    language: 'es'
+  });
+</script>
 {% endblock %}

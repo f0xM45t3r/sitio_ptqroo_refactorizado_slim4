@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\Post;
+use App\Models\HtmlContent;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Illuminate\Support\Str; // Usa el helper Str de Illuminate
@@ -136,6 +137,14 @@ class PostController {
         // var_dump($post); exit;
         $post->save();
         
+        // Guardar contenido HTML si existe
+        if (!empty($data['html_content'])) {
+            HtmlContent::create([
+                'post_id' => $post->id,
+                'html_content' => $data['html_content']
+            ]);
+        }
+        
        
         return $response->withHeader('Location', '/post')->withStatus(302);
     }
@@ -166,6 +175,14 @@ class PostController {
         //echo "fecha: ". $data['published_at']; exit;
         
         $post->save();
+
+        // Actualizar o crear contenido HTML
+        if (isset($data['html_content'])) {
+            HtmlContent::updateOrCreate(
+                ['post_id' => $post->id],
+                ['html_content' => $data['html_content']]
+            );
+        }
         
         return $response->withHeader('Location', '/post')->withStatus(302);
     }

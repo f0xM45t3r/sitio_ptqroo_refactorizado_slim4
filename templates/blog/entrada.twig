@@ -41,31 +41,31 @@
 
                 <div class="blog-content py-4">
                 <h2 class="text-danger fw-bold mb-3">{{post.title}}</h2>
-                {% set contenido_limpio = post.content|replace({'\r\n': '\n', '\r': '\n'}) %}
-                {% set parrafos = contenido_limpio|split('\n\n')|map(p => p|trim)|filter(p => p is not empty) %}
-
-                {# Primer párrafo con formato especial #}
-                <h5 class="text-muted mb-4"> {{ parrafos[0]|nl2br }} </h5>
-
-                <!-- Blockquote -->
-                <blockquote class="blockquote p-4 my-4" style="background-color: #e9ecef; border-left: 4px solid #dc3545;">
-                    <p class="mb-2">{{post.quote}}</p>
-                    <footer class="blockquote-footer mt-2 text-end">  {{post.author.display_name}} </footer>
-                </blockquote>
-
-                {% for parrafo in parrafos|slice(1) %}
-                    <p>{{ parrafo|nl2br }}</p>
-                {% endfor %}
-        
-
 
                 {% if post.htmlContent %}
-                    {{post.htmlContent.html_content|raw }}
-                {% endif %} 
+                    {# Si hay contenido HTML, lo mostramos directamente ya que permite diseño complejo #}
+                    <div class="rich-content">
+                        {{post.htmlContent.html_content|raw }}
+                    </div>
+                {% else %}
+                    {# Si no hay HTML, usamos el formato tradicional de párrafos #}
+                    {% set contenido_limpio = post.content|replace({'\r\n': '\n', '\r': '\n'}) %}
+                    {% set parrafos = contenido_limpio|split('\n\n')|map(p => p|trim)|filter(p => p is not empty) %}
 
+                    {% if parrafos|length > 0 %}
+                        <h5 class="text-muted mb-4"> {{ parrafos[0]|nl2br }} </h5>
+                    {% endif %}
 
+                    <!-- Blockquote -->
+                    <blockquote class="blockquote p-4 my-4" style="background-color: #e9ecef; border-left: 4px solid #dc3545;">
+                        <p class="mb-2">{{post.quote}}</p>
+                        <footer class="blockquote-footer mt-2 text-end">  {{post.author.display_name}} </footer>
+                    </blockquote>
 
-
+                    {% for parrafo in parrafos|slice(1) %}
+                        <p>{{ parrafo|nl2br }}</p>
+                    {% endfor %}
+                {% endif %}
 
                 <div class="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-2">
                     <div>

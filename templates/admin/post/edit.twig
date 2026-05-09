@@ -55,22 +55,35 @@
                 </div>
                 
                 <div class="mb-3">
-                    <label for="content" class="form-label">Contenido</label>
-                    <textarea class="form-control" id="content" name="content" rows="10" required>{{ post.content }}</textarea>
+                    <label for="content" class="form-label">Contenido (Texto plano/Resumen)</label>
+                    <textarea class="form-control" id="content" name="content" rows="4" required>{{ post.content }}</textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="html_content" class="form-label">Contenido Enriquecido (HTML - Para diseños complejos)</label>
+                    <textarea class="form-control" id="html_content" name="html_content" rows="15">{{ post.htmlContent.html_content }}</textarea>
                 </div>
                 
                 <div class="mb-3">
                     <label for="published_at" class="form-label">Fecha de publicación  </label>
-                    <input type="date" class="form-control" id="published_at" name="published_at" value="{{ post.published_at ? post.published_at.format('Y-m-d') : '' }}"  id="publicada_en" name="publicada_en" required>
+                    <input type="date" class="form-control" id="published_at" name="published_at" value="{{ post.published_at ? post.published_at.format('Y-m-d') : '' }}" required>
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Guardar</button>
                 <a href="{{ url_for('post.index') }}" class="btn btn-secondary">Cancelar</a>
             </form>
         </div>
-
-
-
-        
     </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+  tinymce.init({
+    selector: '#html_content',
+    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+    language: 'es'
+  });
+</script>
 {% endblock %}
