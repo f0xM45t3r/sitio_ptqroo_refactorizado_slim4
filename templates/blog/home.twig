@@ -1,0 +1,657 @@
+{% extends 'layouts/base-home.twig' %}
+
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block Carousel %}
+
+            <!-- Carousel Start -->
+            <div class="carousel-header">
+                <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active"></li>
+                        <li data-bs-target="#carouselId" data-bs-slide-to="1"></li>
+                        <li data-bs-target="#carouselId" data-bs-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <img src="img/main/{{principales[0].url_media}}" class="img-fluid w-100" alt="Image">
+                            <div class="carousel-caption-1">
+                                <div class="carousel-caption-1-content" style="max-width: 900px;">
+                                    <h4 class="text-white text-uppercase fw-bold mb-4 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;" style="letter-spacing: 3px;">{{principales[0].intro}}</h4>
+                                    <h1 class="display-2 text-capitalize text-white mb-4 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1.3s" style="animation-delay: 1.3s;">{{principales[0].titulo}}</h1>
+                                    <p class="mb-5 fs-5 text-white fadeInLeft animated" data-animation="fadeInLeft" data-delay="1.5s" style="animation-delay: 1.5s;">{{principales[0].balazo}} - </p>
+                                    <div class="carousel-caption-1-content-btn fadeInLeft animated" data-animation="fadeInLeft" data-delay="1.7s" style="animation-delay: 1.7s;">
+                                        <a class="btn btn-primary rounded-pill flex-shrink-0 py-3 px-5 me-2" href="{{url_for('entrada',{'slug': principales[0].post.slug } ) }}">Leer más</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/main/{{principales[1].url_media}}" class="img-fluid w-100" alt="Image">
+                            <div class="carousel-caption-2">
+                                <div class="carousel-caption-2-content" style="max-width: 900px;">
+                                    <h4 class="text-white text-uppercase fw-bold mb-4 fadeInRight animated" data-animation="fadeInRight" data-delay="1s" style="animation-delay: 1s;" style="letter-spacing: 3px;">{{principales[1].intro}}</h4>
+                                    <h1 class="display-2 text-capitalize text-white mb-4 fadeInRight animated" data-animation="fadeInRight" data-delay="1.3s" style="animation-delay: 1.3s;">{{principales[1].titulo}} </h1>
+                                    <p class="mb-5 fs-5 text-white fadeInRight animated" data-animation="fadeInRight" data-delay="1.5s" style="animation-delay: 1.5s;">{{principales[1].balazo}} </p>
+                                    <div class="carousel-caption-2-content-btn fadeInRight animated" data-animation="fadeInRight" data-delay="1.7s" style="animation-delay: 1.7s;">
+                                        <a class="btn btn-primary rounded-pill flex-shrink-0 py-3 px-5 me-2" href="{{url_for('entrada',{'slug': principales[1].post.slug } ) }}">Leer más</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon btn btn-primary fadeInLeft animated" aria-hidden="true" data-animation="fadeInLeft" data-delay="1.1s" style="animation-delay: 1.3s;"> <i class="fa fa-angle-left fa-3x"></i></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                        <span class="carousel-control-next-icon btn btn-primary fadeInRight animated" aria-hidden="true" data-animation="fadeInLeft" data-delay="1.1s" style="animation-delay: 1.3s;"><i class="fa fa-angle-right fa-3x"></i></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Carousel End -->
+
+{% endblock %}
+
+{% block content %}
+        <!-- Acerca de... Start -->
+        <div id="acerca" class="container-fluid feature bg-light py-5">
+            <div class="container py-5">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                    <h4 class="text-uppercase text-primary">Acerca del</h4>
+                    <h1 class="display-3  mb-3 text-secondary">Partido del Trabajo EdoMex</h1>
+                </div>
+                <div class="row g-4">
+                    <div class=" col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="feature-item p-4">
+                            <div class="feature-icon mb-3"><i class="fas fa-users-cog text-white fa-3x"></i></div>
+                            <a href=" {{ url_for('entrada',{'slug': 'somos-la-verdadera-izquierda'} ) }} " class="h4 mb-3">Somos</a>
+                            <p class="mb-3">Una fuerza política construida desde abajo, por y para trabajadores, comprometida con la transformación social.</p>
+                            <a href=" {{ url_for('entrada',{'slug': 'somos-la-verdadera-izquierda'} ) }} ">Conoce más <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="feature-item p-4">
+                            <div class="feature-icon mb-3"><i class="fas fa-people-carry text-white fa-3x"></i></div>
+                            <a href=" {{ url_for('entrada',{'slug': 'hacemos'} ) }} " class="h4 mb-3">Hacemos</a>
+                            <p class="mb-3">Desarrollamos iniciativas políticas y sociales que fortalecen la participación, promueven derechos y construyen justicia. </p>
+                            <a href=" {{ url_for('entrada',{'slug': 'hacemos'} ) }} ">Conoce más <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="feature-item p-4">
+                            <div class="feature-icon mb-3"><i class="fas fa-bullhorn text-white fa-3x"></i></div>
+                            <a href=" {{ url_for('entrada',{'slug': 'decimos'} ) }} " class="h4 mb-3">Decimos</a>
+                            <p class="mb-3">Denunciamos, proponemos y construimos conciencia desde una voz colectiva, crítica, popular y sin compromisos con el poder</p>
+                            <a href=" {{ url_for('entrada',{'slug': 'decimos'} ) }} ">Conoce más <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
+                        <div class="feature-item p-4">
+                            <div class="feature-icon mb-3"><i class="fas fa-university text-white fa-3x"></i></div>
+                            <a href=" {{ url_for('entrada',{'slug': 'biblioteca-PT-'} ) }} " class="h4 mb-3">Biblioteca PT</a>
+                            <p class="mb-3">Ponemos a tu disposición nuestras publicaciones para el estudio, el debate y la acción revolucionaria organizada</p>
+                            <a href=" {{ url_for('entrada',{'slug': 'biblioteca-PT-'} ) }} ">Conoce más <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Acerca de... End -->
+
+
+        <!-- Revista Digital Start -->
+        <div id="revista" class="container-fluid about overflow-hidden py-5">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
+                        <div class="about-img rounded h-100">
+                            <img src="img/about.jpg" class="img-fluid rounded h-100 w-100" style="object-fit: cover;" alt="">
+                            <div class="about-exp"><span>ABRIL - MAYO 2025</span></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
+                        <div class="about-item">
+                            <h4 class="text-primary text-uppercase">Revista digital</h4>
+                            <h1 class="display-3 mb-3 text-secondary">El PT es la 4T</h1>
+                            <p class="mb-4">El Partido del Trabajo en el Estado de México llevó a cabo un evento exitoso en cumplimiento con lo establecido en el Programa Anual de Trabajo (PAT) 2025
+                            </p>
+                            <div class="bg-light rounded p-4 mb-4">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="d-flex">
+                                            <div class="pe-4">
+                                                <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;"><i class="fas fa-book-reader text-white fa-2x"></i></div>
+                                            </div>
+                                            <div class="">
+                                                <a href="#" class="h4 d-inline-block mb-3">La Ruta del</a>
+                                                <p class="mb-0">Empoderamiento Femenino en México.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-light rounded p-4 mb-4">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="d-flex">
+                                            <div class="pe-4">
+                                                <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;"><i class="fas fa-book-reader text-white fa-2x"></i></div>
+                                            </div>
+                                            <div class="">
+                                                <a href="#" class="h4 d-inline-block mb-3">Fuerza Laboral:</a>
+                                                <p class="mb-0">La lucha del PT por la Justicia y Dignidad en el Trabajo.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="https://ptedomex.com.mx/revista" class="btn btn-primary rounded-pill py-3 px-5">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Revista Digital End -->
+
+
+        <!-- varios Counter -->
+        <div id="varios" class="container-fluid counter py-5">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="counter-item">
+                            <div class="counter-item-icon mx-auto">
+                                <i class="fas fa-file-signature fa-3x text-white"></i>
+                            </div>
+                            <h4 class="text-white my-4">Estrado Electrónico</h4>
+                            <span class="h3 fw-bold text-white">Últimas Notificaciones</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="counter-item">
+                            <div class="counter-item-icon mx-auto">
+                                <i class="fas fa-video fa-3x text-white"></i>
+                            </div>
+                            <h4 class="text-white my-4">Vídeos</h4>
+                            <a href="https://www.youtube.com/@PartidodelTrabajoEDOMEX" target="_blank" class="h4 d-inline-block mb-3">
+                                <span class="h3 fw-bold text-white">Visitanos</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="counter-item">
+                            <div class="counter-item-icon mx-auto">
+                                <i class="fab fa-whatsapp fa-3x text-white"></i>
+                            </div>
+                            <h4 class="text-white my-4">Whatsapp</h4>
+                            <a href="https://chat.whatsapp.com/CNGOwQ1XPze4qSblzP2dga" target="_blank" ">
+                            <span class="h3 fw-bold text-white">Únete a nuestro canal</span>
+                            </a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- varios Counter -->
+
+        <!-- Inclusión y Diversidad Start -->
+        <div id="inclusion" class="container-fluid service bg-light overflow-hidden py-5">
+            <div class="container py-5">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                    <h4 class="text-uppercase text-primary">Reconocer, Valorar y Celebrar las Diferencias</h4>
+                    <h1 class="display-3 mb-3 text-secondary">Inclusión y Diversidad</h1>
+                </div>
+                <div class="row gx-0 gy-4 align-items-center">
+                    <div class="col-lg-6 col-xl-4 wow fadeInLeft" data-wow-delay="0.2s">
+                        <div class="service-item rounded p-4 mb-4">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="d-flex">
+                                        <div class="service-content text-end">
+                                            <a href=" {{ url_for('tema', { 'tematica': 'mujeres' }) }} " class="h4 d-inline-block mb-3">Mujeres Petistas</a>
+                                            <p class="mb-0">Luchamos por la igualdad, contra toda opresión y por una sociedad donde el liderazgo de las mujeres transforme el presente y construya el futuro. 
+                                            <a href=" {{ url_for('tema', { 'tematica': 'mujeres' }) }} " class="fw-bold ">Conoce más <i class="fa fa-angle-right"></i></a></p>
+                                        </div>
+                                        <div class="ps-4">
+                                            <div class="service-btn"><i class="fas fa-venus-double text-white fa-2x"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-item rounded p-4 mb-4">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="d-flex">
+                                        <div class="service-content text-end">
+                                            <a href="{{ url_for('tema', { 'tematica': 'jovenes' }) }}" class="h4 d-inline-block mb-3">Jóvenes PT</a>
+                                            <p class="mb-0">La rebeldía juvenil es motor de cambio. Desde las aulas, los barrios y las calles, construimos poder popular para construir un sistema que nos incluya. 
+                                            <a href="{{ url_for('tema', { 'tematica': 'jovenes' }) }}" class="fw-bold ">Conoce más <i class="fa fa-angle-right"></i></a></p>
+                                        </div>
+                                        <div class="ps-4">
+                                            <div class="service-btn"><i class="fas fa-fire text-white fa-2x"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="bg-transparent">
+                            <img src="img/diversidad.png" class="img-fluid w-100" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-4 wow fadeInRight" data-wow-delay="0.2s">
+                        <div class="service-item rounded p-4 mb-4">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="d-flex">
+                                        <div class="pe-4">
+                                            <div class="service-btn"><i class="fas fa-toolbox text-white fa-2x"></i></div>
+                                        </div>
+                                        <div class="service-content">
+                                            <a href="{{ url_for('tema', { 'tematica': 'petistas' }) }}" class="h4 d-inline-block mb-3">Petistas transformadores</a>
+                                            <p class="mb-0">Con disciplina y conciencia de clase, los Petistas somos el corazón del movimiento. Organizados en las bases, fortalecemos la lucha por una sociedad más justa. 
+                                            <a href="{{ url_for('tema', { 'tematica': 'petistas' }) }}" class="fw-bold ">Conoce más <i class="fa fa-angle-right"></i></a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-item rounded p-4 mb-4">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="d-flex">
+                                        <div class="pe-4">
+                                            <div class="service-btn"><i class="fas fa-fist-raised text-white fa-2x"></i></div>
+                                        </div>
+                                        <div class="service-content">
+                                            <a href="{{ url_for('tema', { 'tematica': 'lgbtq' }) }}" class="h4 d-inline-block mb-3">LGBTQ+</a>
+                                            <p class="mb-0">Diversxs en la lucha, unidxs en la revolución. Contra toda discriminación, exigimos derechos plenos y dignidad. ¡Por una sociedad donde todas las identidades sean libres e iguales!. 
+                                            <a href="{{ url_for('tema', { 'tematica': 'lgbtq' }) }}" class="fw-bold ">Conoce más <i class="fa fa-angle-right"></i></a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Inclusión y Diversidad End -->
+
+       
+        <!-- Transparencia Start -->
+        <div id="transparencia" class="container-fluid about overflow-hidden py-5">
+            <div class="container py-5">
+                <div class="row g-5 flex-column-reverse flex-xl-row">
+                    <!-- Texto a la izquierda -->
+                    <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
+                        <div class="about-item">
+                            <h4 class="text-primary text-uppercase">Acceso a la Información y</h4>
+                            <h1 class="display-3 mb-3 text-secondary">Transparencia</h1>
+                            <p class="mb-4">Consulta aquí los recursos de acceso público sobre nuestras actividades institucionales y normativas.</p>
+                            
+                            <!-- Bloque 1 -->
+                            <div class="bg-light rounded p-4 mb-4">
+                                <div class="d-flex">
+                                    <div class="pe-4">
+                                        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                            <i class="fas fa-file-alt text-white fa-2x"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <a href="#" class="h4 d-inline-block mb-3">Solicitud de información</a>
+                                        <p class="mb-0">Plataforma Nacional de Transparencia <br> <a href="https://www.plataformadetransparencia.org.mx" target="blank" class="fw-bold ">Accesar sitio <i class="fa fa-angle-right"></i></a></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bloque 2 -->
+                            <div class="bg-light rounded p-4 mb-4">
+                                <div class="d-flex">
+                                    <div class="pe-4">
+                                        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                            <i class="fas fa-shield-alt text-white fa-2x"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <a href="#" class="h4 d-inline-block mb-3">Acceso a la Información</a>
+                                        <p class="mb-0"> 
+                                            <a href="https://www.infoem.org.mx/" class="fw-bold "  target="blank" >INFOEM <i class="fa fa-angle-right"></i></a><br>
+                                            <a href="https://share.google/4E8KQx4kdRmGZNSOa" class="fw-bold "  target="blank" >SAIMEX <i class="fa fa-angle-right"></i></a><br>
+                                            <a href="https://share.google/EnW8EfHHaJ0zddoEn" class="fw-bold "  target="blank" >SARCOEM <i class="fa fa-angle-right"></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="#" class="btn btn-primary rounded-pill py-3 px-5">Ver más</a>
+                        </div>
+                    </div>
+
+                    <!-- Imagen a la derecha -->
+                    <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
+                        <div class="transparencia-img rounded h-100 shadow-sm">
+                            <img src="img/transparencia.jpg" class="img-fluid rounded h-100 w-100" alt="Imagen de Transparencia" style="object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Transparencia End -->
+
+        
+        <!-- Sala de Prensa Start -->
+        <div id="prensa" class="container-fluid blog pb-5 pt-5 ">
+            <div class="container pb-5">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                    <h4 class="text-uppercase text-primary">Sala de Prensa</h4>
+                    <h1 class="display-3  mb-3 text-secondary">Últimas Noticias </h1>
+                </div>
+                <div class="row g-4 justify-content-center">
+
+                {% for noticia in noticias %}
+                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="blog-item">
+                            <div class="blog-img">
+                                <img src="img/blog/{{noticia.url_media}}" class="img-fluid rounded-top w-100" alt="">
+                                <div class="blog-date px-4 py-2"><i class="fa fa-calendar-alt me-1"></i>  {{ noticia.published_at|date('d/m/Y')}}</div>
+                            </div>
+                            <div class="blog-content rounded-bottom p-4">
+                                <a href=" {{ url_for('entrada',{'slug': noticia.slug } ) }} " class="h4 d-inline-block mb-3">{{noticia.title}}</a>
+                                <p>{{ noticia.quote }}...</p>
+                                <a href=" {{ url_for('entrada',{'slug': noticia.slug } ) }} " class="fw-bold ">Leer más <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                </div>
+            </div>
+        </div>
+        <!-- Sala de Prensa End -->
+
+        {% if upcoming_events|length > 0 %}
+        <!-- Próximos Eventos Start -->
+        <div id="eventos" class="container-fluid service bg-light overflow-hidden py-5">
+            <div class="container py-5">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                    <h4 class="text-uppercase text-primary">Nuestra Agenda</h4>
+                    <h1 class="display-3 mb-3 text-secondary">Próximos Eventos</h1>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    {% for evento in upcoming_events %}
+                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="service-item interactive rounded p-0 overflow-hidden shadow-sm h-100"
+                             onclick="if (event.target.tagName !== 'A' && event.target.parentElement.tagName !== 'A') { showEventPopup('{{ evento.title|escape('js') }}', '/img/promos/{{ evento.image_path|escape('js') }}', '{{ evento.link_url|escape('js') }}', '{{ evento.button_text|escape('js') }}') }">
+                            {# Thumbnail rectangular superior #}
+
+                            <div class="event-thumb-container">
+                                <img src="/img/promos/{{ evento.image_path }}" 
+                                     alt="{{ evento.title }}" 
+                                     class="img-fluid w-100" 
+                                     style="height: 200px; object-fit: cover;">
+                                <div class="event-overlay d-flex align-items-center justify-content-center">
+                                    <i class="fas fa-search-plus text-white fa-2x"></i>
+                                </div>
+                            </div>                            
+                            <div class="p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="service-btn me-3 flex-shrink-0">
+                                        <i class="fas fa-calendar-check text-white fa-2x"></i>
+                                    </div>
+                                    <h4 class="mb-0">{{ evento.title }}</h4>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="mb-2 text-muted"><i class="fas fa-clock text-primary me-2"></i> {{ evento.event_date|date('d/m/Y H:i') }} hrs.</p>
+                                    <p class="mb-0 text-muted"><i class="fas fa-map-marker-alt text-primary me-2"></i> {{ evento.event_location }}</p>
+                                </div>
+                                <div class="d-flex justify-content-center mt-4">
+                                    {% if evento.link_url %}
+                                    <a href="{{ evento.link_url }}" target="_blank" class="btn btn-primary rounded-pill px-5 w-100">
+                                        {{ evento.button_text ?: 'Ver detalles' }}
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- Próximos Eventos End -->
+        {% endif %}
+
+
+        <!-- Banner Start -->
+        <div id="afiliate" class="container-fluid call-to-action parallax-cta py-5 mb-5 wow fadeIn" data-wow-delay="0.2s">
+            <div class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-12 text-center text-white wow fadeInLeft mb-4 mb-lg-0" data-wow-delay="0.3s">
+                        <h1 class="display-5 display-lg-4 mb-3 text-white">¡Somos la vanguardia ideológica y locomotora de la 4T!</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Banner End -->
+
+
+        <!-- Faq Start -->
+        <div id="faq" class="container-fluid testimonial pb-5 pt-5 mt-5">
+            <div class="container pb-5">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                    <h4 class="text-uppercase text-primary">Consulta nuestras</h4>
+                    <h1 class="display-3 mb-3 text-secondary">Preguntas Frecuentes</h1>
+                </div>
+                <div class="row">
+                    <div class="col-lg-5 wow fadeInLeft" data-wow-delay="0.2s">
+                        <h3 class="fw-bold">Tienes alguna <span class="text-primary">Duda</span></h3>
+                        <p class="mb-4">En esta sección aclaramos las inquietudes más frecuentes sobre nuestro movimiento, las propuestas y la participación ciudadana. Conoce cómo puedes sumarte, informarte y ser parte del cambio.</p>
+                        <a href=" {{ url_for('entrada',{'slug': 'preguntas-frecuentes'} ) }} " class="fw-bold">¿Tienes más preguntas? Visita nuestra sección <i class="fa fa-angle-right"></i></a>
+
+                    </div>
+                    <div class="col-lg-7 wow fadeInRight" data-wow-delay="0.4s">
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item border-0 shadow-sm mb-3 wow fadeInUp" data-wow-delay="0.1s">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        1. ¿Qué es el Partido del Trabajo?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        El Partido del Trabajo es una organización política comprometida con la justicia social, la equidad y los derechos del pueblo trabajador de México.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 shadow-sm mb-3 wow fadeInUp" data-wow-delay="0.2s">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        2. ¿Cómo puedo afiliarme al PT?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Puedes afiliarte desde nuestra página oficial, en la sección "<a href="#" class="fw-bold">Afíliate </a> ", llenando un formulario simple o acudiendo a nuestra sede más cercana.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 shadow-sm mb-3 wow fadeInUp" data-wow-delay="0.3s">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        3. ¿Qué propuestas impulsan actualmente?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Nuestras principales propuestas giran en torno a la educación pública, la soberanía energética, el bienestar laboral y la transformación social incluyente.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 shadow-sm mb-3 wow fadeInUp" data-wow-delay="0.4s">
+                                <h2 class="accordion-header" id="headingFour">
+                                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        4. ¿Cómo puedo participar en las actividades del PT?
+                                    </button>
+                                </h2>
+                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Puedes colaborar en brigadas, talleres, eventos públicos o como voluntario en campañas locales. <a href="#" class="fw-bold">Consúltanos </a> y obten mas información.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 shadow-sm wow fadeInUp" data-wow-delay="0.5s">
+                                <h2 class="accordion-header" id="headingFive">
+                                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                        5. ¿Dónde puedo consultar los estatutos y principios del PT?
+                                    </button>
+                                </h2>
+                                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Puedes encontrar nuestros estatutos, principios ideológicos y programas completos en la sección "Somos".
+                                         <a href="#" class="fw-bold">Ir a la sección <i class="fa fa-angle-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Faq End -->        
+
+
+        <!-- Opiniones Start -->
+        <div id="opiniones" class="container-fluid testimonial pb-5">
+            <div class="container pb-5">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                    <h4 class="text-uppercase text-primary">Dicho y Escrito</h4>
+                    <h1 class="display-3 mb-3 text-secondary">Opiniones</h1>
+                </div>
+                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.3s">
+
+                 {% for opinion in opiniones %}
+                    <div class="testimonial-item text-center p-4">
+                        <p>{{opinion.title }}</p>
+                        <div class="d-flex justify-content-center mb-4">
+                            <img src="{{ base_url }}img/autores/{{opinion.author.url_media}}" class="img-fluid border border-4 border-danger" style="width: 100px; height: 100px; border-radius: 50px;" alt="">
+                        </div>
+                        <div class="d-block">
+                            <h4 class="text-dark">{{opinion.author.display_name}}</h4>
+                            <p class="m-0 pb-3">{{opinion.author.charge}}</p>
+                            <div class="d-flex justify-content-center text-secondary">
+                               <a href="#" class="fw-bold">Ver más <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+        <!-- Opiniones End -->
+
+
+        <!-- Contact Start -->
+        <div id="contacto" class="container-fluid contact bg-light py-5">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-6 h-100 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="text-center mx-auto pb-5" style="max-width: 800px;">
+                            <h4 class="text-uppercase text-primary">contáctanos</h4>
+                            <h1 class="display-3 mb-3 text-secondary">Enviar Mensaje</h1>
+                            <p class="mb-0">¿Quieres sumarte, proponer o contarnos algo? Escríbenos. Cada mensaje es parte de la construcción colectiva. Te responderemos lo antes posible. <a class="fw-bold" href="https://htmlcodex.com/contact-form"></a></p>
+                        </div>
+                        <form action="{{ url_for('procesaForm') }}" method="post">
+                            <div class="row g-4">
+                                <div class="col-lg-12 col-xl-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0" id="nombre" name="nombre" placeholder="Su nombre">
+                                        <label for="name">Nombre</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-xl-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control border-0" id="email" name="email" placeholder="Su correo electrónico">
+                                        <label for="email">Correo electrónico</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-xl-6">
+                                    <div class="form-floating">
+                                        <input type="phone" class="form-control border-0" id="telefono" name="telefono" placeholder="Teléfono">
+                                        <label for="phone">Número celular</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-xl-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0" id="asunto" name="asunto" placeholder="Tema">
+                                        <label for="subject">Tema </label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control border-0" placeholder="Deje su mensaje aquí" id="mensaje" name="mensaje"  style="height: 175px"></textarea>
+                                        <label for="message">Mensaje</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3">Enviar mensaje</button>
+                                </div>
+                                <input type="hidden" name="{{ csrf_name_key }}" value="{{ csrf_name }}">
+                                <input type="hidden" name="{{ csrf_value_key }}" value="{{ csrf_value }}">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <div class="d-inline-flex rounded bg-white w-100 p-4">
+                                    <i class="fas fa-map-marker-alt fa-2x text-vino me-4"></i>
+                                    <div>
+                                        <h4>PT Estado de México</h4>
+                                        <p class="mb-0">Lago Athabasca 103, Nueva Oxotitlán, C.P. 50100, Toluca de Lerdo, Estado de México.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-xl-6">
+                                <div class="d-inline-flex rounded bg-white w-100 p-4">
+                                    <i class="fas fa-envelope fa-2x text-vino me-4"></i>
+                                    <div>
+                                        <h4>Correo electrónico</h4>
+                                        <p class="mb-0">contacto@ptedomex.com.mx</p>
+                                        <p class="mb-0">&nbsp;</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-xl-6">
+                                <div class="d-inline-flex rounded bg-white w-100 p-4">
+                                    <i class="fa fa-phone-alt fa-2x text-vino me-4"></i>
+                                    <div>
+                                        <h4>Teléfono</h4>
+                                        <p class="mb-0">55 7155 4992</p>
+                                        <p class="mb-0">55 7258 0337</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="h-100 overflow-hidden">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!4v1768421265300!6m8!1m7!1sPc-noc6D49RDjF_HWZYOtQ!2m2!1d19.27999772277519!2d-99.68336274788537!3f246.58678761976174!4f10.549948254823562!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->   
+{% endblock %}

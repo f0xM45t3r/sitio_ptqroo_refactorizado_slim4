@@ -1,0 +1,74 @@
+{% extends 'layouts/admin-base.twig' %}
+
+{% block title %}Promociones y Eventos{% endblock %}
+
+{% block content %}
+<div class="container mt-1">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a href="{{ url_for('admin.promotions.create') }}" class="btn btn-primary btn-lg rounded-circle shadow" title="Nueva Promoción/Evento">
+            <i class="fas fa-plus"></i>
+        </a>
+    </div>
+    <h1 class="h3 mb-2 text-gray-800">Promociones y Eventos Próximos</h1>
+    <p class="mb-4">Gestiona los pop-ups publicitarios y la agenda de eventos desde aquí.</p>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Título / Evento</th>
+                    <th>Imagen</th>
+                    <th>Fecha Evento</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for promo in promotions %}
+                <tr>
+                    <td>{{ promo.id }}</td>
+                    <td>
+                        <strong>{{ promo.title }}</strong><br>
+                        <small class="text-muted"><i class="fas fa-map-marker-alt"></i> {{ promo.event_location ?: 'Sin ubicación' }}</small>
+                    </td>
+                    <td>
+                        {% if promo.image_path %}
+                        <img src="/img/promos/{{ promo.image_path }}" width="60" class="img-thumbnail">
+                        {% else %}
+                        <span class="text-muted">Sin imagen</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ promo.event_date ? promo.event_date|date('d/m/Y H:i') : 'N/A' }}
+                    </td>
+                    <td>
+                        {% if promo.is_active %}
+                            <span class="badge badge-success">Activo</span>
+                        {% else %}
+                            <span class="badge badge-secondary">Inactivo</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a href="{{ url_for('admin.promotions.edit', {id: promo.id}) }}" class="btn btn-sm btn-primary">
+                                <i class="fas fa-edit"></i> Editar
+                            </a>
+                            <form action="{{ url_for('admin.promotions.delete', {id: promo.id}) }}" method="POST" class="d-inline">
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Eliminar esta promoción?')">
+                                    <i class="fas fa-trash"></i> Borrar
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6" class="text-center">No hay promociones configuradas.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

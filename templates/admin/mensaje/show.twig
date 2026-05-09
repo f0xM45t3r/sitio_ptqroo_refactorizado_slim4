@@ -1,0 +1,41 @@
+{% extends 'layouts/admin-vacio.twig' %}
+
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Ver Mensaje</div>
+
+                    <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Mensaje de {{ registro.nombre }}</h5>
+                        <small>{{ registro.created_at|date('d/m/Y') }}</small>
+                    </div>
+                        <div class="card-body">
+                            <p><strong>Email:</strong> {{ registro.email }}</p>
+                            <p><strong>Teléfono:</strong> {{ registro.telefono }}</p>
+                            <p><strong>Asunto:</strong> {{ registro.asunto }}</p>
+                            <p><strong>Mensaje:</strong> {{ registro.mensaje }}</p>
+                            <hr>
+                            <div class="row text-muted small">
+                                <div class="col-md-6"><strong>Estatus:</strong> {{ registro.estatus }}</div>
+                                <div class="col-md-6"><strong>IP:</strong> {{ registro.ip_address }}</div>
+                                <div class="col-md-12 mt-2"><strong>User Agent:</strong> {{ registro.user_agent }}</div>
+                                <div class="col-md-12 mt-2"><strong>Notas del admin:</strong>
+                                    <pre style="white-space: pre-wrap;">
+{{ registro.notas_admin|e  }}
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                    <!-- Botón para regresar -->
+                    <a href="{{url_for('mensaje.index' )}}" class="btn btn-secondary">← Volver al índice</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

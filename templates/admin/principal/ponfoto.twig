@@ -1,0 +1,85 @@
+{% extends 'layouts/admin-base.twig' %}
+
+{% block title %}Crear Post{% endblock %}
+
+{% block link%}
+
+    <link href="https://unpkg.com/cropperjs@1.5.13/dist/cropper.css" rel="stylesheet">
+
+    <style>
+        /* Asegura que la imagen no desborde */
+        #imagePreview {
+            max-width: 100%;
+        }
+    </style>
+
+{%endblock%}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1>Poner foto al artículo principal en el SErvidoR : {{autor.display_name}}</h1>
+        
+        <form action="{{url_for('principal.ponfoto.update',{'id': autor.id }  ) }}" method="post" enctype="multipart/form-data">
+
+            <!-- Input de la imagen -->
+            <div>
+                <label for="imageInput">Imagen</label>
+                <input type="file" id="imageInput" name="image" accept="image/*" required>
+            </div>
+
+            <!-- Vista previa + Cropper -->
+            <div>
+                <img id="imagePreview" style="display:none;" />
+            </div>
+
+            <!-- Campos ocultos para coordenadas -->
+            <input type="hidden" name="crop_x" id="crop_x">
+            <input type="hidden" name="crop_y" id="crop_y">
+            <input type="hidden" name="crop_width" id="crop_width">
+            <input type="hidden" name="crop_height" id="crop_height">
+
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+{% endblock %}
+
+
+
+
+{% block script%}
+    <script src="https://unpkg.com/cropperjs@1.5.13/dist/cropper.js"></script>
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const imagePreview = document.getElementById('imagePreview');
+        let cropper;
+
+        imageInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            imagePreview.style.display = 'block';
+            imagePreview.src = URL.createObjectURL(file);
+
+            imagePreview.onload = () => {
+                if (cropper) cropper.destroy(); // Por si sube más de una imagen
+                cropper = new Cropper(imagePreview, {
+                    aspectRatio: 960 / 540,  // Proporción 120/120
+                    viewMode: 1,
+                    autoCropArea: 1,
+                    crop(event) {
+                        document.getElementById('crop_x').value = event.detail.x;
+                        document.getElementById('crop_y').value = event.detail.y;
+                        document.getElementById('crop_width').value = event.detail.width;
+                        document.getElementById('crop_height').value = event.detail.height;
+                    }
+                });
+            };
+        });
+    </script>
+
+{%endblock%}
+
+
+
+
+

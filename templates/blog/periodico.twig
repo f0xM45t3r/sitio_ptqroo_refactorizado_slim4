@@ -1,0 +1,197 @@
+{% extends 'layouts/base-home.twig' %}
+
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block Carousel %}
+
+            <!-- Header Start -->
+            <div class="container-fluid bg-breadcrumb">
+                <div class="container text-center py-5" style="max-width: 900px;">
+                    <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">{{post.category.name}}</h4>
+                    <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                        <li class="breadcrumb-item"><a href="{{ url_for('home') }}">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url_for('home') }}">{{post.category.name}}</a></li>
+                        <li class="breadcrumb-item active text-primary">{{post.title}}</li>
+                    </ol>    
+                </div>
+            </div>
+            <!-- Header End -->
+
+{% endblock %}
+
+{% block content %}
+
+
+        <!-- Blog Start -->
+
+
+        <section class="py-5" style="background-color: #f8f9fa;">
+        <div class="blog-container">
+            <div class="d-flex flex-wrap justify-content-between gap-5">
+            
+            <!-- Main Blog Content -->
+            <div class="blog-article">
+                
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+
+
+                 <!-- Indice  revista octubre-->
+                <div class="d-flex mb-4 align-items-start">
+                  <!-- Imagen: 1/4 del ancho -->
+                  <div class="col-md-3 col-12">
+                    <img src="/img/portadaEDOMEXoct25.jpg" alt="Portada Revista" class="img-fluid rounded" style="width: 100%; height: auto;">
+                  </div>
+        
+                  <!-- Título y resumen: 3/4 del ancho -->
+                  <div class="col-md-9 col-12 ps-md-4 pt-3 pt-md-0">
+                    <h3 class="fw-bold text-danger">Unidad Nacional: Todo el poder al pueblo</h3>
+                    <ul>
+                      <li>Supera PT metas de Organización en Zinacantepec.</li>
+                      <li>PT exige redoblar esfuerzos para erradicar la explotación sexual de niñas, niños y adolescentes.</li>
+                      <li>Diputado Ernesto Santillán Ramírez rinde Informe Legislativo.</li>
+                    </ul>
+                    <p class="text-muted mb-0">
+                      Somos la Vanguardia Ideológica y locomotora de la 4T.
+                    </p>
+                    <a href="https://ptedomex.com.mx/pdfs/revista-estatal-OCT25.pdf" target="_blank"><div class="fw-bold">  ver pdf </div> </a>
+                  </div>
+                </div>   
+                <hr>
+                
+                 <!-- Indice tipo revista -->
+                <div class="d-flex mb-4 align-items-start">
+                  <!-- Imagen: 1/4 del ancho -->
+                  <div class="col-md-3 col-12">
+                    <img src="/img/portadaEDOMEX2025B.jpg" alt="Portada Revista" class="img-fluid rounded" style="width: 100%; height: auto;">
+                  </div>
+        
+                  <!-- Título y resumen: 3/4 del ancho -->
+                  <div class="col-md-9 col-12 ps-md-4 pt-3 pt-md-0">
+                    <h3 class="fw-bold text-danger">Unidad Nacional: Todo el poder al pueblo</h3>
+                    <ul>
+                      <li>PT impulsa el bienestar en Axapusco con la remodelación de la Unidad Deportiva de Jaltepec.</li>
+                      <li>El agua llega a más familias de Calimaya con visión petista.</li>
+                      <li>El PT reconoce la lucha histórica por la emancipación y derechos de las mujeres indígenas y afrodescendientes en México.</li>
+                    </ul>
+                    <p class="text-muted mb-0">
+                      Somos la Vanguardia Ideológica y locomotora de la 4T.
+                    </p>
+                    <a href="https://ptedomex.com.mx/pdfs/REVISTA-ESTATAL2vF.pdf" target="_blank"><div class="fw-bold">  ver pdf </div> </a>
+                  </div>
+                </div>                
+                
+                
+                
+                <hr>
+                 <!-- Indice tipo revista -->
+                <div class="d-flex mb-4 align-items-start">
+                  <!-- Imagen: 1/4 del ancho -->
+                  <div class="col-md-3 col-12">
+                    <img src="/img/portadaEDOMEX2025.jpg" alt="Portada Revista" class="img-fluid rounded" style="width: 100%; height: auto;">
+                  </div>
+        
+                  <!-- Título y resumen: 3/4 del ancho -->
+                  <div class="col-md-9 col-12 ps-md-4 pt-3 pt-md-0">
+                    <h3 class="fw-bold text-danger">Unidad Nacional: Todo el poder al pueblo</h3>
+                    <ul>
+                      <li>PT reconoce liderazdo de la Presidenta Claudia Sheinbaum y Expansión Histórica de Programas Sociales.</li>
+                      <li>Impulsa Dip. Sara Ramírez de la O una reforma legislativa con rostro humano en favor de personas con TEA.</li>
+                      <li>Fernando Vilchis llama a sumartse al Partido del Trabajo, el más consistente de la Cuarta Transformación.</li>
+                    </ul>
+                    <p class="text-muted mb-0">
+                      Somos la Vanguardia Ideológica y locomotora de la 4T.
+                    </p>
+                    <a href="https://ptedomex.com.mx/pdfs/PERIODICO-LISTO-FINAL.pdf" target="_blank"><div class="fw-bold">  ver pdf </div> </a>
+                  </div>
+                </div>
+
+                
+
+
+                <div class="blog-content py-4">
+
+                <!-- Blockquote -->
+                <blockquote class="blockquote p-4 my-4" style="background-color: #e9ecef; border-left: 4px solid #dc3545;">
+                    
+                </blockquote>
+
+
+
+                <div class="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-2">
+                    <div>
+                        <strong>Categoría:</strong>
+                        <span class="badge bg-danger"> {{post.category.name}} </span>
+                    </div>
+                    <div>
+                        <strong>Compartir:</strong>
+                        <a href="#" class="text-dark me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-dark me-2"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-dark me-2"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-dark"><i class="bi bi-share"></i></a>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Previous/Next Section -->
+                <div class="prev-next">
+                    <div class="row align-items-center">
+                        <!-- Previous -->
+                        <div class="col-md-5 text-start">
+                        <small class="text-dark">← Entrada anterior</small>
+                        <a href=" {{ url_for('entrada', { 'slug': ant.slug }) }}  "><div class="fw-bold">  {{ant.title}} </div> </a>
+                        </div>
+
+                        <!-- Vertical Divider -->
+                        <div class="col-md-2 d-none d-md-flex justify-content-center">
+                        <div style="width: 1px; height: 90px; background-color: #bababa;"></div>
+                        </div>
+
+                        <!-- Next -->
+                        <div class="col-md-5 text-end">
+                        <small class="text-dark">Entrada siguiente →</small>
+                        <a href=" {{ url_for('entrada', { 'slug': sig.slug }) }} "> <div class="fw-bold">  {{sig.title}}  </div> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+
+            <div class="blog-sidebar">
+            <div class="card p-4">
+                <h5 class="mb-4">Lo más relevante</h5>
+                <hr>
+
+                {% for post in latestPosts %}
+                <div class="d-flex mb-3">
+                <img src=" {{ base_url }}img/autores/{{post.author.url_media}} " alt="Post Thumbnail" style="width: 60px; height: 60px; object-fit: cover;" class="me-3 rounded">
+                <div>
+                    <a href=" {{ url_for('entrada',{'slug': post.slug} ) }}"><div class="fw-bold"> {{post.title}} </div></a>
+                    
+                    <small class="text-muted"> {{post.quote}} </small><br>
+                    <small class="text-muted"> {{ post.published_at|fecha_corta }} </small>
+                </div>
+                </div>
+                <hr>
+                {% endfor %}
+
+            </div>
+            </div>
+
+            <!-- Sidebar end-->
+            </div>
+        </div>
+        </section>
+
+
+        <!-- Blog End -->
+        
+
+
+
+
+
+
+
+{% endblock %}

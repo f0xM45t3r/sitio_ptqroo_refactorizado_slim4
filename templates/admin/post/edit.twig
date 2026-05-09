@@ -1,0 +1,76 @@
+{% extends 'layouts/admin-base.twig' %}
+
+{% block title %}Editar una publicación {% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        
+
+        <div class="container mt-4">
+            <h1>Editar publicación</h1>
+            
+            <form method="post" action="{{  url_for('post.update', {id: post.id})  }}">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Título</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ post.title }}"  required>
+                </div>
+                          
+                <div class="mb-3">
+               
+                    <label for="author_id" class="form-label">Autor </label>
+                    <select name="author_id" id="author_id" class="form-control">
+                      {% for autor in autores %}
+                        <option 
+                          value="{{ autor.id }}"
+                          {% if post.author_id == autor.id %}
+                              selected
+                          {% endif %}
+                        >
+                          {{ autor.display_name }}
+                        </option>
+                      {% endfor %}
+                    </select>
+
+                </div>
+                
+                <div class="mb-3">
+                    <label for="category_id" class="form-label">Categoría</label>
+                    <select name="category_id" id="category_id" class="form-control">
+                      {% for categoria in categorias %}
+                        <option 
+                          value="{{ categoria.id }}"
+                          {% if post.category_id == categoria.id %}
+                              selected
+                          {% endif %}
+                        >
+                          {{ categoria.name }}
+                        </option>
+                      {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="quote" class="form-label">Cita</label>
+                    <textarea class="form-control" id="quote" name="quote" rows="3" required>{{ post.quote }}</textarea>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="content" class="form-label">Contenido</label>
+                    <textarea class="form-control" id="content" name="content" rows="10" required>{{ post.content }}</textarea>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="published_at" class="form-label">Fecha de publicación  </label>
+                    <input type="date" class="form-control" id="published_at" name="published_at" value="{{ post.published_at ? post.published_at.format('Y-m-d') : '' }}"  id="publicada_en" name="publicada_en" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="{{ url_for('post.index') }}" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+
+
+
+        
+    </div>
+{% endblock %}

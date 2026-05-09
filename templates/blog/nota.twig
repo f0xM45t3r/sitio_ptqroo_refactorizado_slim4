@@ -1,0 +1,82 @@
+{% extends 'layouts/base-home.twig' %}
+
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block Carousel %}
+
+            <!-- Header Start -->
+            <div class="container-fluid bg-breadcrumb">
+                <div class="container text-center py-5" style="max-width: 900px;">
+                    <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Sala de Prensa</h4>
+                    <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                        <li class="breadcrumb-item"><a href=" {{ url_for('home') }} ">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href=" {{ url_for('home') }} ">Sala de Prensa</a></li>
+                        <li class="breadcrumb-item active text-primary">{{categoryName}}</li>
+                    </ol>    
+                </div>
+            </div>
+            <!-- Header End -->
+
+{% endblock %}
+
+{% block content %}
+
+
+        <!-- Blog Start -->
+        <div class="container-fluid blog py-5">
+            <div class="container py-5">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                    <h4 class="text-uppercase text-primary">Lo Relevante</h4>
+                    <h1 class="display-3 text-capitalize mb-3">{{categoryName}}</h1>
+                </div>
+                <div class="row g-4 justify-content-center">
+
+                {% for post in posts %}
+                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="blog-item">
+                            <div class="blog-img">
+                                <img src="{{ base_url }}img/blog/{{post.url_media}}" class="img-fluid rounded-top w-100" alt="">
+                                <div class="blog-date px-4 py-2"><i class="fa fa-calendar-alt me-1"></i>  {{ post.published_at|fecha_corta }} </div>
+                            </div>
+                            <div class="blog-content rounded-bottom p-4">
+                                <a href=" {{ url_for('entrada',{'slug': post.slug} ) }} " class="h4 d-inline-block mb-3">{{ post.title }}</a>
+                                <p>{{ post.quote }}...</p>
+                                <a href=" {{ url_for('entrada',{'slug': post.slug} ) }} " class="fw-bold text-secondary">Leer más <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <p>No hay entradas en esta categoría.</p>
+                {% endfor %}   
+
+                </div>
+            </div>
+        </div>
+        <!-- Blog End -->
+
+        {% if posts.hasPages or posts.lastPage > 1 %}
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center small-pager wow fadeInUp" data-wow-delay="0.2s">
+
+                {# Botón Anterior #}
+                <li class="page-item  {% if not posts.previousPageUrl %}disabled{% endif %}">
+                    <a class="page-link" href="{{ url_for('tema', { 'tematica': tematica, 'pagina': (posts.currentPage - 1) }) }}">Ant</a>
+                </li>
+
+                {# Números de página #}
+                {% for page in 1..posts.lastPage %}
+                <li class="page-item {{ page == posts.currentPage ? 'active text-bg-danger' : '' }}">
+                    <a class="page-link" href="{{ url_for('tema', { 'tematica': tematica,'pagina': page }) }}">{{ page }}</a>
+                </li>
+                {% endfor %}
+
+                {# Botón Siguiente #}
+                <li class="page-item  {% if not posts.nextPageUrl %} disabled {% endif %}}">
+                    <a class="page-link" href="{{ url_for('tema', { 'tematica': tematica, 'pagina': (posts.currentPage + 1) }) }}">Sig</a>
+                </li>
+
+            </ul>
+        </nav>
+        {% endif %} 
+
+{% endblock %}

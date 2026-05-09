@@ -1,0 +1,8 @@
+vendor/
+.env
+*.zip
+*.sql
+public_html/img/
+public_html/imgs/
+public_html/pdfs/
+node_modules/

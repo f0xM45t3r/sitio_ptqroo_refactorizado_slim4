@@ -1,0 +1,69 @@
+{% extends 'layouts/base-home.twig' %}
+
+{% block title %}Convocatorias - Partido del Trabajo Estado de México{% endblock %}
+
+{% block content %}
+<!-- Header Convocatorias -->
+<div class="container-fluid bg-breadcrumb py-5">
+    <div class="container text-center py-5">
+        <h3 class="text-white display-3 mb-4">Convocatorias</h3>
+    </div>
+</div>
+
+<!-- Próximos Eventos Start -->
+<div id="convocatorias" class="container-fluid service bg-light overflow-hidden py-5">
+    <div class="container py-5">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+            <h4 class="text-uppercase text-primary">Nuestra Agenda</h4>
+            <h1 class="display-3 mb-3 text-secondary">Próximos Eventos</h1>
+        </div>
+        
+        {% if eventos|length > 0 %}
+        <div class="row g-4 justify-content-center">
+            {% for evento in eventos %}
+            <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.2s">
+                <div class="service-item interactive rounded p-0 overflow-hidden shadow-sm h-100"
+                     onclick="if (event.target.tagName !== 'A' && event.target.parentElement.tagName !== 'A') { showEventPopup('{{ evento.title|escape('js') }}', '/img/promos/{{ evento.image_path|escape('js') }}', '{{ evento.link_url|escape('js') }}', '{{ evento.button_text|escape('js') }}') }">
+                    
+                    <div class="event-thumb-container">
+                        <img src="/img/promos/{{ evento.image_path }}" 
+                             alt="{{ evento.title }}" 
+                             class="img-fluid w-100" 
+                             style="height: 200px; object-fit: cover;">
+                        <div class="event-overlay d-flex align-items-center justify-content-center">
+                            <i class="fas fa-search-plus text-white fa-2x"></i>
+                        </div>
+                    </div>                            
+                    
+                    <div class="p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="service-btn me-3 flex-shrink-0">
+                                <i class="fas fa-calendar-check text-white fa-2x"></i>
+                            </div>
+                            <h4 class="mb-0">{{ evento.title }}</h4>
+                        </div>
+                        <div class="mb-3">
+                            <p class="mb-2 text-muted"><i class="fas fa-clock text-primary me-2"></i> {{ evento.event_date|date('d/m/Y H:i') }} hrs.</p>
+                            <p class="mb-0 text-muted"><i class="fas fa-map-marker-alt text-primary me-2"></i> {{ evento.event_location }}</p>
+                        </div>
+                        <div class="d-flex justify-content-center mt-4">
+                            {% if evento.link_url %}
+                            <a href="{{ evento.link_url }}" target="_blank" class="btn btn-primary rounded-pill px-5 w-100">
+                                {{ evento.button_text ?: 'Ver detalles' }}
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center">
+            <p class="fs-4">Por el momento no hay convocatorias próximas.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<!-- Próximos Eventos End -->
+{% endblock %}

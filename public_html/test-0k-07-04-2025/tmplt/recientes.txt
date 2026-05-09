@@ -1,0 +1,21 @@
+                    <!-- Sección de entradas recientes -->
+                    <div class="col-lg-3 wow fadeInRight " data-wow-delay="0.4s">
+                        <h3>Entradas recientes</h3>
+                        <hr>
+                        <p>&nbsp</p>
+                        <div class="mb-3 d-flex">
+                            <img src="img/pt_100x100.jpg" class="img-fluid me-2 img-fixed" alt="Miniatura" >
+                            <div>
+                                <h5>El Partido del Trabajo</h5>
+                                <p class="text-muted"> comprometido con la transparencia y el fortalecimiento de las bases.</p>
+                            </div>
+                        </div>
+                        <div class="mb-3 d-flex">
+                            <img src="img/carousel_100x100.jpg" class="img-fluid me-2 img-fixed" alt="Miniatura" >
+                            <div>
+                                <h5>El PT a la vanguardia: </h5>
+                                <p class="text-muted">impulsando el Liderazgo Femenino en la 4T.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sección de entradas fin -->

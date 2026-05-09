@@ -1,0 +1,28 @@
+{% extends 'layouts/admin-base.twig' %}
+
+{% block title %}Crear Autor{% endblock %}
+
+{% block content %}
+
+
+    <div class="container mt-4">
+        <h1>Crear Autor</h1>
+        
+        <form method="post" action="{{ url_for('autor.store') }}">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+                                  
+            <div class="mb-3">
+                <label for="cargo" class="form-label">Cargo</label>
+                <input type="text" class="form-control" id="cargo" name="cargo" required>
+            </div>
+                       
+            <button type="submit" class="btn btn-primary">Crear</button>
+            <a href="{{ url_for('autor.index') }}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+
+
+{% endblock %}

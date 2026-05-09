@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Partido del Trabajo -Estado de México-</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="{{ base_url }}lib/animate/animate.min.css" rel="stylesheet">
+        <link href="{{ base_url }}lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="{{ base_url }}css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="{{ base_url }}css/style.css" rel="stylesheet">
+        <link href="{{ base_url }}css/custom.css" rel="stylesheet">
+        
+        <style>
+            .service-item.interactive {
+                position: relative;
+                cursor: pointer !important;
+                pointer-events: auto !important;
+                z-index: 1;
+            }
+            .service-item.interactive a.btn {
+                position: relative;
+                pointer-events: auto !important;
+                z-index: 10;
+                cursor: pointer;
+            }
+            .event-thumb-container {
+                position: relative;
+                overflow: hidden;
+                display: block;
+            }
+            .event-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(220, 53, 69, 0.7);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                pointer-events: none !important;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 2;
+            }
+            .service-item.interactive:hover .event-overlay {
+                opacity: 1;
+            }
+            .promo-carousel .item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .promo-carousel img {
+                width: 100% !important;
+                height: auto;
+            }
+            .z-index-10 { z-index: 10; }
+        </style>
+
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid position-relative p-10">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="https://ptedomex.com.mx" class="navbar-brand p-0">
+                    <h1 class="text-primary d-flex align-items-center ps-5">
+                        <img src="{{ base_url }}img/logoPTnw.svg" alt="Logo" style="width: 195px; height: 70px;" class="me-2"> </h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="{{ url_for('home') }}" class="nav-item nav-link {% if activo=='inicio' %}active{% endif %}">Inicio</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Acerca de</a>
+                            <div class="dropdown-menu m-0">
+                                <a href=" {{ url_for('entrada',{'slug': 'somos-la-verdadera-izquierda'} ) }} " class="dropdown-item text-center py-2">Somos</a>
+                                <a href=" {{ url_for('entrada',{'slug': 'hacemos'} ) }} " class="dropdown-item text-center py-2">Hacemos</a>
+                                <a href=" {{ url_for('entrada',{'slug': 'decimos'} ) }} " class="dropdown-item text-center py-2">Decimos</a>
+                                <a href=" {{ url_for('entrada',{'slug': 'biblioteca-PT-'} ) }} " class="dropdown-item text-center py-2">Biblioteca PT</a>
+                                <a href=" {{ url_for('periodico' ) }} " class="dropdown-item text-center py-2">Periódico Digital</a>
+                                 <a href="#" class="dropdown-item text-center py-2">Revista Digital</a>
+                                <a href="{{ url_for('entrada',{'slug': 'aviso-de-privacidad-y-proteccion'} ) }}" class="dropdown-item text-center py-2">Avisos de Privacidad</a> 
+
+                                
+                            </div>
+                        </div>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle {% if activo=='tematica' %}active{% endif %}" data-bs-toggle="dropdown" >Sectoriales</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="{{ url_for('tema', { 'tematica': 'mujeres' }) }}" class="dropdown-item text-center py-2">Mujeres Petistas</a>
+                                <a href="{{ url_for('tema', { 'tematica': 'jovenes' }) }}" class="dropdown-item text-center py-2">Jóvenes PT</a>
+                                <a href="{{ url_for('tema', { 'tematica': 'petistas' }) }}" class="dropdown-item text-center py-2">Petistas Transformadores</a>
+                                <a href="{{ url_for('tema', { 'tematica': 'lgbtq' }) }}" class="dropdown-item text-center py-2">LGBTQ +</a>
+                            </div>
+                        </div>                       
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle {% if activo=='salaprensa' %}active{% endif %}" data-bs-toggle="dropdown">Sala de Prensa</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="{{ url_for('nota', { 'tematica': 'noticias' }) }}" class="dropdown-item text-center py-2">Últimas Noticias</a>
+                                <a href="{{ url_for('nota', { 'tematica': 'opiniones' }) }}" class="dropdown-item text-center py-2">Opiniones</a>
+                                <a href=" {{ url_for('entrada',{'slug': 'preguntas-frecuentes'} ) }} " class="dropdown-item text-center py-2">Preguntas Frecuentes</a>
+                                <a href="{{ url_for('convocatorias') }}" class="dropdown-item text-center py-2">Convocatorias</a>
+                                <a href="index2.html#varios" class="dropdown-item text-center py-2">Canal de Telegram</a>
+                                <a href="index2.html#varios" class="dropdown-item text-center py-2">Suscríbete</a>
+                                <a href="index2.html#varios" class="dropdown-item text-center py-2">Vídeos</a>
+                            </div>
+                        </div>                         
+                        <a href="{{ url_for('contacto') }}" class="nav-item nav-link {% if activo=='contacto' %}active{% endif %}">Contacto</a>
+                    </div>
+                    <a href="" class="py-2 px-4">&nbsp;</a>
+                </div>
+            </nav>
+            
+
+            {% block Carousel %}
+            <p>Contenido carrusel.</p>
+            {% endblock %} 
+
+        </div>
+        <!-- Navbar & Hero End -->
+
+        {% block content %}
+        <p>Contenido principal.</p>
+        {% endblock %} 
+
+        <!-- Footer Start -->
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+            <div class="container py-5">
+                <div class="row g-5 mb-5 align-items-center">
+                    <div class="col-lg-7">
+                        <div class="position-relative mx-auto">
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="d-flex align-items-center justify-content-center justify-content-lg-end">
+                            <a class="btn btn-primary btn-md-square rounded-circle me-3" href="https://www.facebook.com/PartidodelTrabajoEstadodeMexico/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-md-square rounded-circle me-3" href="https://x.com/PT_EDOMEX_1" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-primary btn-md-square rounded-circle me-3" href="https://www.instagram.com/pt_edomex1/" target="_blank"><i class="fab fa-instagram"></i></a>
+
+                            <a class="btn btn-primary btn-md-square rounded-circle me-3" href="https://www.youtube.com/@PartidodelTrabajoEDOMEX" target="_blank"><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-primary btn-md-square rounded-circle me-3" href="https://www.tiktok.com/@pt.edomex.1" target="_blank"><i class="fab fa-tiktok"></i></a>
+                            
+                            <a class="btn btn-primary btn-md-square rounded-circle me-0" href="#" target="_blank"><i class="fab fa-spotify"></i></a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Acerca del PT</h4>
+                            <a href="/entrada/somos-la-verdadera-izquierda"><i class="fas fa-angle-right me-2"></i> Somos</a>
+                            <a href="/entrada/hacemos"><i class="fas fa-angle-right me-2"></i> Hacemos</a>
+                            <a href="/entrada/decimos"><i class="fas fa-angle-right me-2"></i> Decimos</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Biblioteca PT</a>
+                            <a href="/#transparencia"><i class="fas fa-angle-right me-2"></i> Transparencia</a>
+                            <a href="/#faq"><i class="fas fa-angle-right me-2"></i> Preguntas Frecuentes</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Sectoriales</h4>
+                            <a href="/revista"><i class="fas fa-angle-right me-2"></i> Revista Digital</a>
+                            <a href="/tema/mujeres"><i class="fas fa-angle-right me-2"></i> Mujeres Petistas</a>
+                            <a href="/tema/jovenes"><i class="fas fa-angle-right me-2"></i> Jóvenes PT</a>
+                            <a href="/tema/petistas"><i class="fas fa-angle-right me-2"></i> Petistas Transformadores</a>
+                            <a href="/tema/lgbtq"><i class="fas fa-angle-right me-2"></i> LGBTQ+</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Actualidad</h4>
+                            <a href="/nota/noticias"><i class="fas fa-angle-right me-2"></i> Últimas Noticias</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Suscríbete</a>
+                            <a href="/nota/opiniones"><i class="fas fa-angle-right me-2"></i> Opinión</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Vídeos+</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Estrado Electrónico</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Contáctanos</h4>
+                            <p href="#"><i class="fa fa-map-marker-alt me-2"></i> Lago Athabasca 103, Nueva Oxotitlán, C.P. 50100, Toluca de Lerdo, Estado de México.</p>
+                            <a href="mailto:info@example.com"><i class="fas fa-envelope me-2"></i> contacto@ptedomex.com.mx</a>
+                            <a href="#"><i class="fas fa-phone me-2"></i>55 7155 4992; 55 7258 0337</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+        
+        {% if activo == 'inicio' and promo_carousel|length > 0 %}
+        <!-- Popup de promoción (Carousel) -->
+        <div class="modal fade" id="promoModal" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content position-relative">
+        
+              <button 
+                type="button" 
+                class="btn-close position-absolute top-0 end-0 m-2 z-index-10" 
+                data-bs-dismiss="modal" 
+                aria-label="Cerrar"
+                style="z-index: 1051;"
+              ></button>
+        
+              <div class="modal-body p-0 text-center">
+                <div class="owl-carousel promo-carousel">
+                    {% for promo in promo_carousel %}
+                    <div class="item">
+                        <img 
+                          src='/img/promos/{{ promo.image_path }}' 
+                          alt="{{ promo.title }}"
+                          class="img-fluid w-100 rounded"
+                        >
+                        {% if promo.link_url %}
+                        <div class="p-3">
+                          <a 
+                            href="{{ promo.link_url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-primary w-100"
+                          >
+                            {{ promo.button_text ?: 'Ver más información' }}
+                          </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Popup promo end -->
+        {% endif %}
+
+        <!-- Modal para detalle de Evento (Agenda) -->
+        <div class="modal fade" id="eventDetailModal" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow">
+              <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-bold text-secondary" id="eventDetailTitle">Detalle del Evento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+              </div>
+              <div class="modal-body text-center p-4">
+                <img id="eventDetailImg" src="" alt="" class="img-fluid rounded shadow-sm mb-3">
+                <div id="eventDetailLinkContainer" class="mt-3 d-none">
+                    <a id="eventDetailLink" href="" target="_blank" class="btn btn-primary rounded-pill px-5">Ver detalles</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-md-0">
+                        <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end text-body">
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                        Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom text-white" href="https://themewagon.com">ThemeWagon</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ base_url }}lib/wow/wow.min.js"></script>
+    <script src="{{ base_url }}lib/easing/easing.min.js"></script>
+    <script src="{{ base_url }}lib/waypoints/waypoints.min.js"></script>
+    <script src="{{ base_url }}lib/counterup/counterup.min.js"></script>
+    <script src="{{ base_url }}lib/owlcarousel/owl.carousel.min.js"></script>
+    
+    
+    {% if activo == 'inicio' and promo_carousel|length > 0 %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const modalEl = document.getElementById('promoModal');
+        if (modalEl && !sessionStorage.getItem('promo_shown')) {
+          const modal = new bootstrap.Modal(modalEl, {
+            keyboard: true
+          });
+          
+          // Inicializar carrusel cuando el modal se muestre
+          modalEl.addEventListener('shown.bs.modal', function () {
+            $('.promo-carousel').owlCarousel({
+                autoplay: true,
+                smartSpeed: 500,
+                items: 1,
+                dots: true,
+                loop: true,
+                nav: false
+            });
+          });
+
+          setTimeout(() => {
+            modal.show();
+            sessionStorage.setItem('promo_shown', 'true');
+          }, 1500); 
+        }
+      });
+    </script>
+    {% endif %}
+
+    {# {% if activo == 'inicio' and popup_promo %} #}
+    {# <script> #}
+      {# document.addEventListener('DOMContentLoaded', function () { #}
+        {# const modalEl = document.getElementById('promoModal'); #}
+        {# if (modalEl && !sessionStorage.getItem('promo_shown')) { #}
+          {# const modal = new bootstrap.Modal(modalEl, { #}
+            {# keyboard: true #}
+          {# }); #}
+          {# setTimeout(() => { #}
+            {# modal.show(); #}
+            {# sessionStorage.setItem('promo_shown', 'true'); #}
+          {# }, 1500); // 1.5 segundos de retraso #}
+        {# } #}
+      {# }); #}
+    {# </script> #}
+    {# {% endif %} #}
+
+    {# Evento Modal Detail Listener #}
+    <script>
+      function showEventPopup(title, imgSrc, linkUrl, btnText) {
+          const modalEl = document.getElementById('eventDetailModal');
+          const modalTitle = document.getElementById('eventDetailTitle');
+          const modalImg = document.getElementById('eventDetailImg');
+          const modalLinkContainer = document.getElementById('eventDetailLinkContainer');
+          const modalLink = document.getElementById('eventDetailLink');
+
+          modalTitle.textContent = title;
+          modalImg.src = imgSrc;
+          modalImg.alt = title;
+
+          if (linkUrl && linkUrl !== '') {
+            modalLink.href = linkUrl;
+            modalLink.textContent = btnText || 'Ver detalles';
+            modalLinkContainer.classList.remove('d-none');
+          } else {
+            modalLinkContainer.classList.add('d-none');
+          }
+
+          const modal = new bootstrap.Modal(modalEl);
+          
+          // Ensure focus management: blur the document to avoid conflicts
+          document.activeElement.blur(); 
+          
+          modal.show();
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const eventThumbnails = document.querySelectorAll('.event-thumb-container');
+        console.log('Event listeners attached to', eventThumbnails.length, 'thumbnails');
+
+        eventThumbnails.forEach(container => {
+          container.addEventListener('click', function(e) {
+            console.log('Thumbnail clicked!');
+            const title = container.dataset.title;
+            const imgSrc = container.dataset.imgSrc;
+            const linkUrl = container.dataset.linkUrl;
+            const btnText = container.dataset.btnText;
+
+            showEventPopup(title, imgSrc, linkUrl, btnText);
+          });
+        });
+      });
+    </script>
+
+    <!-- Template Javascript -->
+    <script src="{{ base_url }}js/main.js"></script>
+    </body>
+
+</html>

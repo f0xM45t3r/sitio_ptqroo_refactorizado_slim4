@@ -1,0 +1,117 @@
+        <!-- Footer Start -->
+        <div class="container-fluid footer py-5 fadeIn" id="foot">
+            <div class="container py-4">
+                <div class="row g-5 mb-5 align-items-center">
+                    <div class="col-lg-7">
+                        <div class="position-relative d-flex" style="transform: skew(18deg);">
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="d-flex align-items-center justify-content-center justify-content-lg-end">
+                            <a class="btn btn-primary btn-md-square me-3" href="https://www.facebook.com/share/1BCvcaesYq/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-md-square me-3" href="https://x.com/ptqroo_?s=21&t=YNqj3JCYJAitvqxwN3WXyg"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-primary btn-md-square me-3" href="https://www.instagram.com/ptquintanaroo?igsh=bWppemF1dTBmZWVt&utm_source=qr"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-primary btn-md-square me-3" href="https://youtube.com/@partidodeltrabajoquintanaroo?si=kVRNu2hcRFiJ6HRE"><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-primary btn-md-square me-0" href="https://www.tiktok.com/@ptqroo?_t=ZM-8ub6O1AfWcP&_r=1"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4"><i class="fas fa-hand-rock text-primary me-2"></i> Partido del Trabajo Quintana Roo</h4>
+                            <p class="mb-0 text-white">“Ante la duda, aún más a la izquierda”.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Enlaces rápidos</h4>
+                            <a href="index.php"> Inicio</a>
+                            <a href="index.php#sobrenos"> Nuestro Partido</a>
+                            <a href="index.php#prensa"> Sala de Prensa</a>
+                            <a href="index.php#trsp"> Transparencia</a>
+                            <a href="index.php#dips"> Conoce a tu diputad@</a>
+                            <a href="index.php#afiliate"> Afiliación</a>
+                            <a href="contacto.php"> Contacto</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4"> Contacto</h4>
+                            <div class="row g-2">
+                                <div class="col-12">
+                                    <div class="d-flex">
+                                        <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                                        <div>
+                                            <h5 class="text-white mb-2">Dirección</h5>
+                                            <p class="mb-0 text-white">Av. Nipchupte Sm 15 Mz. 10 Lt. 3 casa 11 C.P. 77505, Cancún, Quintana Roo</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="d-flex">
+                                        <i class="fas fa-envelope text-primary me-2"></i>
+                                        <div>
+                                            <h5 class="text-white mb-2">Correo electrónico</h5>
+                                            <p class="mb-0 text-white">partidodeltrabajoqroo@gmail.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="d-flex">
+                                        <i class="fa fa-phone-alt text-primary me-2"></i>
+                                        <div>
+                                            <h5 class="text-white mb-2">Teléfono</h5>
+                                            <p class="mb-0 text-white">
+                                            +52 (998) 630 3373
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-md-0">
+                        <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Partido del Trabajo Quintana Roo</a>, Derechos Reservados.</span>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end text-body">
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                        Diseñado por <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a>
+                        Distribuida por <a href="https://themewagon.com/">ThemeWagon</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+
+        <!-- Back to Top -->
+        <div class="back-to-top">
+            <a href="#" class="btn"><i class="fa fa-arrow-up"></i></a>  
+        </div> 
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js?v=<?php echo time(); ?>"></script>
+        <script src="lib/easing/easing.min.js?v=<?php echo time(); ?>"></script>
+        <script src="lib/waypoints/waypoints.min.js?v=<?php echo time(); ?>"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js?v=<?php echo time(); ?>"></script>
+
+
+        <!-- Template Javascript -->
+        <script src="js/main.js?v=<?php echo time(); ?>"></script>

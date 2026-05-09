@@ -1,0 +1,40 @@
+{% extends 'layouts/admin-base.twig' %}
+
+{% block title %}Crear Autor{% endblock %}
+
+{% block content %}
+
+
+    <div class="container mt-4">
+        <h1>Actualizar estado del mensaje</h1>
+        
+        <form method="post" action="{{  url_for('mensaje.update', {id: mensaje.id})  }}" >
+            <div class="mb-3">
+                <label for="name" class="form-label">Estado</label>
+                    <select name="estatus" id="estatus" class="form-control">
+                      {% for estado in estados %}
+                        <option 
+                          value="{{ estado }}"
+                          {% if mensaje.estatus == estado %}
+                              selected
+                          {% endif %}
+                        >
+                          {{ estado }}
+                        </option>
+                      {% endfor %}
+                    </select>
+            </div>
+                       
+                <div class="mb-3">
+                    <label for="notas_admin" class="form-label">Notas</label>
+                    <textarea class="form-control" id="notas_admin" name="notas_admin" rows="6" required>{{ mensaje.notas_admin }}</textarea>
+                </div>
+
+
+            <button type="submit" class="btn btn-primary">Actualizar estado</button>
+            <a href="{{ url_for('mensaje.index') }}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+
+
+{% endblock %}

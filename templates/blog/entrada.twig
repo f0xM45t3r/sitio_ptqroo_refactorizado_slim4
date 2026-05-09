@@ -1,0 +1,146 @@
+{% extends 'layouts/base-home.twig' %}
+
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block Carousel %}
+
+            <!-- Header Start -->
+            <div class="container-fluid bg-breadcrumb">
+                <div class="container text-center py-5" style="max-width: 900px;">
+                    <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">{{post.category.name}}</h4>
+                    <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                        <li class="breadcrumb-item"><a href="{{ url_for('home') }}">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url_for('home') }}">{{post.category.name}}</a></li>
+                        <li class="breadcrumb-item active text-primary">{{post.title}}</li>
+                    </ol>    
+                </div>
+            </div>
+            <!-- Header End -->
+
+{% endblock %}
+
+{% block content %}
+
+
+        <!-- Blog Start -->
+
+
+        <section class="py-5" style="background-color: #f8f9fa;">
+        <div class="blog-container">
+            <div class="d-flex flex-wrap justify-content-between gap-5">
+            
+            <!-- Main Blog Content -->
+            <div class="blog-article">
+                <img src=" {{ base_url }}img/blog/{{post.url_media}} " alt="Blog Image" class="blog-img">
+
+                <div class="blog-meta d-flex justify-content-between flex-wrap">
+                <span><i class="bi bi-lightbulb"></i> {{post.category.name}} </span>
+                <span><i class="bi bi-chat"></i> {{post.author.display_name}}</span>
+                <span><i class="bi bi-calendar"></i>  {{ post.published_at|fecha_corta }} </span>
+                </div>
+
+                <div class="blog-content py-4">
+                <h2 class="text-danger fw-bold mb-3">{{post.title}}</h2>
+                {% set contenido_limpio = post.content|replace({'\r\n': '\n', '\r': '\n'}) %}
+                {% set parrafos = contenido_limpio|split('\n\n')|map(p => p|trim)|filter(p => p is not empty) %}
+
+                {# Primer párrafo con formato especial #}
+                <h5 class="text-muted mb-4"> {{ parrafos[0]|nl2br }} </h5>
+
+                <!-- Blockquote -->
+                <blockquote class="blockquote p-4 my-4" style="background-color: #e9ecef; border-left: 4px solid #dc3545;">
+                    <p class="mb-2">{{post.quote}}</p>
+                    <footer class="blockquote-footer mt-2 text-end">  {{post.author.display_name}} </footer>
+                </blockquote>
+
+                {% for parrafo in parrafos|slice(1) %}
+                    <p>{{ parrafo|nl2br }}</p>
+                {% endfor %}
+        
+
+
+                {% if post.htmlContent %}
+                    {{post.htmlContent.html_content|raw }}
+                {% endif %} 
+
+
+
+
+
+                <div class="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-2">
+                    <div>
+                        <strong>Categoría:</strong>
+                        <span class="badge bg-danger"> {{post.category.name}} </span>
+                    </div>
+                    <div>
+                        <strong>Compartir:</strong>
+                        <a href="#" class="text-dark me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-dark me-2"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-dark me-2"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-dark"><i class="bi bi-share"></i></a>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Previous/Next Section -->
+                <div class="prev-next">
+                    <div class="row align-items-center">
+                        <!-- Previous -->
+                        <div class="col-md-5 text-start">
+                        <small class="text-dark">← Entrada anterior</small>
+                        <a href=" {{ url_for('entrada', { 'slug': ant.slug }) }}  "><div class="fw-bold">  {{ant.title}} </div> </a>
+                        </div>
+
+                        <!-- Vertical Divider -->
+                        <div class="col-md-2 d-none d-md-flex justify-content-center">
+                        <div style="width: 1px; height: 90px; background-color: #bababa;"></div>
+                        </div>
+
+                        <!-- Next -->
+                        <div class="col-md-5 text-end">
+                        <small class="text-dark">Entrada siguiente →</small>
+                        <a href=" {{ url_for('entrada', { 'slug': sig.slug }) }} "> <div class="fw-bold">  {{sig.title}}  </div> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+
+            <div class="blog-sidebar">
+            <div class="card p-4">
+                <h5 class="mb-4">Lo más relevante</h5>
+                <hr>
+
+                {% for post in latestPosts %}
+                <div class="d-flex mb-3">
+                <img src=" {{ base_url }}img/autores/{{post.author.url_media}} " alt="Post Thumbnail" style="width: 60px; height: 60px; object-fit: cover;" class="me-3 rounded">
+                <div>
+                    <a href=" {{ url_for('entrada',{'slug': post.slug} ) }}"><div class="fw-bold"> {{post.title}} </div></a>
+                    
+                    <small class="text-muted"> {{post.quote}} </small><br>
+                    <small class="text-muted"> {{ post.published_at|fecha_corta }} </small>
+                </div>
+                </div>
+                <hr>
+                {% endfor %}
+
+            </div>
+            </div>
+
+            <!-- Sidebar end-->
+            </div>
+        </div>
+        </section>
+
+
+        <!-- Blog End -->
+        
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,25 @@
+[19-Mar-2025 01:23:05 UTC] PHP Warning:  include(./tmplt/head.txt): failed to open stream: No such file or directory in /home/f0xm4st3r/public_html/test/index.php on line 5
+[19-Mar-2025 01:23:05 UTC] PHP Warning:  include(./tmplt/head.txt): failed to open stream: No such file or directory in /home/f0xm4st3r/public_html/test/index.php on line 5
+[19-Mar-2025 01:23:05 UTC] PHP Warning:  include(): Failed opening './tmplt/head.txt' for inclusion (include_path='.:/opt/alt/php72/usr/share/pear') in /home/f0xm4st3r/public_html/test/index.php on line 5
+[19-Mar-2025 01:23:08 UTC] PHP Warning:  include(./tmplt/head.txt): failed to open stream: No such file or directory in /home/f0xm4st3r/public_html/test/index.php on line 5
+[19-Mar-2025 01:23:08 UTC] PHP Warning:  include(./tmplt/head.txt): failed to open stream: No such file or directory in /home/f0xm4st3r/public_html/test/index.php on line 5
+[19-Mar-2025 01:23:08 UTC] PHP Warning:  include(): Failed opening './tmplt/head.txt' for inclusion (include_path='.:/opt/alt/php72/usr/share/pear') in /home/f0xm4st3r/public_html/test/index.php on line 5
+[19-Mar-2025 01:23:22 UTC] PHP Warning:  include(./tmplt/head.txt): failed to open stream: No such file or directory in /home/f0xm4st3r/public_html/test/index.php on line 5
+[19-Mar-2025 01:23:22 UTC] PHP Warning:  include(./tmplt/head.txt): failed to open stream: No such file or directory in /home/f0xm4st3r/public_html/test/index.php on line 5
+[19-Mar-2025 01:23:22 UTC] PHP Warning:  include(): Failed opening './tmplt/head.txt' for inclusion (include_path='.:/opt/alt/php72/usr/share/pear') in /home/f0xm4st3r/public_html/test/index.php on line 5
+[04-Apr-2025 05:38:10 UTC] PHP Warning:  require(ruta/a/PHPMailer/src/Exception.php): failed to open stream: No such file or directory in /home/f0xm4st3r/public_html/test/recibeQueja.php on line 8
+[04-Apr-2025 05:38:10 UTC] PHP Warning:  require(ruta/a/PHPMailer/src/Exception.php): failed to open stream: No such file or directory in /home/f0xm4st3r/public_html/test/recibeQueja.php on line 8
+[04-Apr-2025 05:38:10 UTC] PHP Fatal error:  require(): Failed opening required 'ruta/a/PHPMailer/src/Exception.php' (include_path='.:/opt/alt/php72/usr/share/pear') in /home/f0xm4st3r/public_html/test/recibeQueja.php on line 8
+[04-Apr-2025 05:38:17 UTC] PHP Warning:  require(ruta/a/PHPMailer/src/Exception.php): failed to open stream: No such file or directory in /home/f0xm4st3r/public_html/test/recibeQueja.php on line 8
+[04-Apr-2025 05:38:17 UTC] PHP Warning:  require(ruta/a/PHPMailer/src/Exception.php): failed to open stream: No such file or directory in /home/f0xm4st3r/public_html/test/recibeQueja.php on line 8
+[04-Apr-2025 05:38:17 UTC] PHP Fatal error:  require(): Failed opening required 'ruta/a/PHPMailer/src/Exception.php' (include_path='.:/opt/alt/php72/usr/share/pear') in /home/f0xm4st3r/public_html/test/recibeQueja.php on line 8
+[04-Apr-2025 05:43:14 UTC] PHP Warning:  require(ruta/a/PHPMailer/src/Exception.php): failed to open stream: No such file or directory in /home/f0xm4st3r/public_html/test/recibeQueja.php on line 15
+[04-Apr-2025 05:43:14 UTC] PHP Warning:  require(ruta/a/PHPMailer/src/Exception.php): failed to open stream: No such file or directory in /home/f0xm4st3r/public_html/test/recibeQueja.php on line 15
+[04-Apr-2025 05:43:14 UTC] PHP Fatal error:  require(): Failed opening required 'ruta/a/PHPMailer/src/Exception.php' (include_path='.:/opt/alt/php72/usr/share/pear') in /home/f0xm4st3r/public_html/test/recibeQueja.php on line 15
+[04-Apr-2025 20:03:00 UTC] PHP Notice:  Undefined index: email in /home/f0xm4st3r/public_html/test/recibeQueja.php on line 50
+[04-Apr-2025 20:03:00 UTC] PHP Notice:  Undefined index: phone in /home/f0xm4st3r/public_html/test/recibeQueja.php on line 51
+[04-Apr-2025 20:03:00 UTC] PHP Notice:  Undefined index: message in /home/f0xm4st3r/public_html/test/recibeQueja.php on line 52
+[04-Apr-2025 20:03:00 UTC] PHP Notice:  Undefined index: name in /home/f0xm4st3r/public_html/test/recibeQueja.php on line 53
+[04-Apr-2025 20:03:00 UTC] PHP Notice:  Undefined index: phone in /home/f0xm4st3r/public_html/test/recibeQueja.php on line 54
+[04-Apr-2025 20:03:00 UTC] PHP Notice:  Undefined index: phone in /home/f0xm4st3r/public_html/test/recibeQueja.php on line 55
+[04-Apr-2025 20:23:56 UTC] PHP Notice:  Undefined variable: lastname in /home/f0xm4st3r/public_html/test/recibeQueja.php on line 63
